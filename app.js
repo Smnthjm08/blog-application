@@ -11,7 +11,9 @@ const port = 3000 || process.env.PORT;
 //db connect
 connectDB();
 
+app.use(express.urlencoded({extended: true }));
 app.use(express.static('public'));
+app.use(express.json());
 
 //Template Engine
 app.use(expressLayout);
