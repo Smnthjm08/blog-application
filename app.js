@@ -23,6 +23,7 @@ app.use(cookieParser());
 const sessionStore = MongoStore.create({
     mongoUrl: process.env.MONGODB_URI,
     mongooseConnection: mongoose.connection,
+    collectionName: "sessions",
 });
 
 // Session middleware
