@@ -68,7 +68,7 @@ router.post('/admin', async (req, res) => {
     
     });
 
-    //dashboard
+//dashboard
 router.get('/dashboard', authMiddleware, async (req, res) => {
     try {
       const locals = {
@@ -151,6 +151,60 @@ router.post('/add-post', authMiddleware, async (req, res) => {
   }
 });
 
+//get - edit post
+router.get('/edit-post/:id', authMiddleware, async (req, res) => {
+  try {
+    console.log("sucesss");
+    const locals = {
+      title: "Edit Post",
+      description: "Free Nodejs User Management System"
+    };
 
+    const data = await Post.findOne({_id: req.params.id});
+    res.render("admin/edit-post", {
+      locals,
+      data,
+      layout: adminLayout
+    })
+  } 
+  catch (error) {
+      console.log(error);
+      res.status(500).send("Internal Server Error");
+  }
+});
+
+
+//put - edit post
+router.put('/edit-post/:id', authMiddleware, async (req, res) => {
+  try {
+
+    await Post.findByIdAndUpdate(req.params.id, {
+      title: req.body.title,
+      body: req.body.body,
+      updatedAt: Date.now(),
+    });
+    res.redirect(`/edit-post/${req.params.id}`);
+  } 
+  catch (error) {
+      console.log(error);
+      res.status(500).send("Internal Server Error");
+  }
+});
+
+//delete - admin delete posts
+router.delete("/delete-post/:id", authMiddleware, async(req, res) =>{
+  try{
+    await Post.deleteOne({ _id: req.params.id });
+    res.redirect("/dashboard");
+  } catch{
+    console.log(error);
+  }
+});
+
+//GET admin logout
+router.get("/logout", (req, res) =>{
+  res.clearCookie("token");
+  res.redirect("/")
+})
 
 module.exports = router;
