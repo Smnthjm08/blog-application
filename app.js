@@ -10,6 +10,7 @@ const mongoose = require("mongoose");
 // import connect-mongo and pass session
 const MongoStore = require("connect-mongo"); 
 const connectDB = require("./server/config/db");
+
 const app = express();
 const port = process.env.PORT || 3000;
 
