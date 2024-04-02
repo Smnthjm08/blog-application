@@ -5,6 +5,7 @@ const expressLayouts = require("express-ejs-layouts");
 const methodOverride = require("method-override")
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
+
 const mongoose = require("mongoose");
 
 // import connect-mongo and pass session
