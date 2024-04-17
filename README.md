@@ -2,10 +2,6 @@
 
 This is a simple CRUD (Create, Read, Update, Delete) blog application built using Node.js, Express, EJS (Embedded JavaScript), and MongoDB. It allows users to create, view, update, and delete blog posts.
 
-## Overview
-
-This project provides a platform for users to manage blog posts. It leverages the power of Node.js and Express for the backend server, EJS for dynamic HTML rendering, and MongoDB as the database to store blog post data.
-
 ## Features
 
 - Create, Read, Update, and Delete blog posts.
